@@ -1,39 +1,40 @@
+
+
+
+.one {
+  font-size:44px;
+  color: #F50FBB;
+  line-height: 1.5;
+}
+
+
 img{
     float:right;
-    
+    width: 45%;
+    height: 45%;  
     }
-  
-   
-  .one {
-      color: #F50FBB;
-      line-height: 1.5;
-      
+
+
+.heading {
+      font-size:35px;
+      color: blueviolet;   
   }
-  
-  h1 {
-     
-     color: black;   
-  }
-  
-  h2{
-    color:blueviolet;
-    font-size: 21px;
-    
-  }
-  p1 {
-    color: #756073;
-    font-size: 21px;
+ 
+
+p1 {
     font-family: Avenir;
-    
-  }
-  
-  
+    font-size:21px;
+    color: #756073;
+      
+}
+
+
    
-  #content-wrapper{
+#content-wrapper{
     display:table;
   }
   
-  #content{
+#content{
     display:table-row;
   }
   
@@ -61,5 +62,13 @@ img{
     left: 20px;
     align-content: left;
     padding-right: 20px;
+  }
+  
+  @media (max-width: 550px) {
+    p { font-size: 15px; }
+  }
+  
+  @media (min-width: 551px) {
+    p { font-size: 20px; }
   }
   
