@@ -1,0 +1,32 @@
+img{
+    float:center;
+    width: 45%;
+    height: 45%;  
+    }
+
+.one{
+    font-size:44px;
+    color: #F50FBB;
+    line-height: 1.5;
+    }
+
+.heading{
+    font-size:44px;
+    color: blueviolet;   
+        }
+
+p1{
+ font-family: Avenir;
+ font-size:21px;
+ color: #756073;
+  }
+
+p{
+    font-family: Avenir;
+    font-size: 19px;
+}
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
