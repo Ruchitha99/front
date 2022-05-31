@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<style>
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+.head{
+    color: black;
+    text-align: center;
+    
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+body, html {
+    height: 100%;
+}
+
+.heads,h1{
+    color: white;  
+}
+.heading{
+    color: white;
+}
+
+.nav .open > a {
+    background-color: transparent;
+}
+
+    .nav .open > a:hover {
+        background-color: transparent;
+    }
+
+    .nav .open > a:focus {
+        background-color: transparent;
+    }
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+    #wrapper.toggled {
+        padding-left: 220px;
+    }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 220px;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+            margin-right: -220px;
+            position: absolute;
+        }
+
+#sidebar-wrapper {
+    background: #1a1a1a;
+    height: 100%;
+    left: 220px;
+    margin-left: -220px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    width: 0;
+    z-index: 1000;
+}
+
+    #sidebar-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+
+#page-content-wrapper {
+    padding-top: 70px;
+    width: 100%;
+}
+
+
+.sidebar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 220px;
+}
+
+    .sidebar-nav li {
+        display: inline-block;
+        line-height: 20px;
+        position: relative;
+        width: 100%;
+    }
+
+        .sidebar-nav li:before {
+            background-color: #1c1c1c;
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            -webkit-transition: width 0.2s ease-in;
+            -moz-transition: width 0.2s ease-in;
+            -ms-transition: width 0.2s ease-in;
+            -o-transition: width 0.2s ease-in;
+            transition: width 0.2s ease-in;
+            width: 3px;
+            z-index: -1;
+        }
+
+        .sidebar-nav li:before {
+            background-color: #8a8f92;
+        }
+
+        .sidebar-nav li:hover:before {
+            -webkit-transition: width 0.2s ease-in;
+            -moz-transition: width 0.2s ease-in;
+            -ms-transition: width 0.2s ease-in;
+            -o-transition: width 0.2s ease-in;
+            transition: width 0.2s ease-in;
+            width: 100%;
+        }
+
+        .sidebar-nav li a {
+            color: #dddddd;
+            display: block;
+            padding: 10px 15px 10px 30px;
+            text-decoration: none;
+        }
+
+        .sidebar-nav li.open:hover before {
+            -webkit-transition: width 0.2s ease-in;
+            -moz-transition: width 0.2s ease-in;
+            -ms-transition: width 0.2s ease-in;
+            -o-transition: width 0.2s ease-in;
+            transition: width 0.2s ease-in;
+            width: 100%;
+        }
+
+    .sidebar-nav .dropdown-menu {
+        background-color: #222222;
+        -ms-border-radius: 0;
+        border-radius: 0;
+        border: none;
+        -webkit-box-shadow: none;
+        -ms-box-shadow: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        width: 100%;
+    }
+
+    .sidebar-nav li a:hover, .sidebar-nav li a:active, .sidebar-nav li a:focus, .sidebar-nav li.open a:hover, .sidebar-nav li.open a:active, .sidebar-nav li.open a:focus {
+        background-color: transparent;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .sidebar-nav > .sidebar-brand {
+        font-size: 20px;
+        height: 65px;
+        line-height: 44px;
+    }
+
+.hamburger {
+    background: transparent;
+    border: none;
+    display: block;
+    height: 32px;
+    margin-left: 15px;
+    position: fixed;
+    top: 20px;
+    width: 32px;
+    z-index: 999;
+}
+
+    .hamburger:hover {
+        outline: none;
+    }
+
+    .hamburger:focus {
+        outline: none;
+    }
+
+    .hamburger:active {
+        outline: none;
+    }
+
+    .hamburger.is-closed:before {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        content: '';
+        display: block;
+        font-size: 14px;
+        line-height: 32px;
+        -ms-opacity: 0;
+        opacity: 0;
+        text-align: center;
+        width: 100px;
+    }
+
+    .hamburger.is-closed:hover before {
+        -webkit-transform: translate3d(-100px, 0, 0);
+        -moz-transform: translate3d(-100px, 0, 0);
+        -ms-transform: translate3d(-100px, 0, 0);
+        -o-transform: translate3d(-100px, 0, 0);
+        transform: translate3d(-100px, 0, 0);
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        display: block;
+        -ms-opacity: 1;
+        opacity: 1;
+    }
+
+    .hamburger.is-closed:hover .hamb-top {
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        top: 0;
+    }
+
+    .hamburger.is-closed:hover .hamb-bottom {
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        bottom: 0;
+    }
+
+    .hamburger.is-closed .hamb-top {
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        top: 5px;
+    }
+
+    .hamburger.is-closed .hamb-middle {
+        margin-top: -2px;
+        top: 50%;
+    }
+
+    .hamburger.is-closed .hamb-bottom {
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        bottom: 5px;
+    }
+
+    .hamburger.is-closed .hamb-top, .hamburger.is-closed .hamb-middle, .hamburger.is-closed .hamb-bottom, .hamburger.is-open .hamb-top, .hamburger.is-open .hamb-middle, .hamburger.is-open .hamb-bottom {
+        height: 4px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .hamburger.is-open .hamb-top {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        -moz-transition: -moz-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        -ms-transition: -ms-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        -o-transition: -o-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        transition: transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        margin-top: -2px;
+        top: 50%;
+    }
+
+    .hamburger.is-open .hamb-middle {
+        display: none;
+    }
+
+    .hamburger.is-open .hamb-bottom {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        -moz-transition: -moz-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        -ms-transition: -ms-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        -o-transition: -o-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        transition: transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+        margin-top: -2px;
+        top: 50%;
+    }
+
+    .hamburger.is-open:before {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        content: '';
+        display: block;
+        font-size: 14px;
+        line-height: 32px;
+        -ms-opacity: 0;
+        opacity: 0;
+        text-align: center;
+        width: 100px;
+    }
+
+    .hamburger.is-open:hover before {
+        -webkit-transform: translate3d(-100px, 0, 0);
+        -moz-transform: translate3d(-100px, 0, 0);
+        -ms-transform: translate3d(-100px, 0, 0);
+        -o-transform: translate3d(-100px, 0, 0);
+        transform: translate3d(-100px, 0, 0);
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -ms-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        display: block;
+        -ms-opacity: 1;
+        opacity: 1;
+    }
+
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 0%;
+    height: 10%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    background-color: white;
+    z-index: 1;
+}
+
+.hamb-bottom, .hamb-middle, .hamb-top {
+    background-color: black;
+}
+</style>
+</head>
+<body>
+
+    <div id="wrapper" class="">
+        <div class="overlay" style="display: none;"></div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+           <ul class="nav sidebar-nav">
+              <li class="sidebar-brand">
+                 <a> BILL SNAP</a>
+              </li>
+              
+              <li>
+                <a href="index.html" class="active">
+                  <i class='bx bx-grid-alt' ></i>
+                  <span class="links_name">Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="estimates.html">
+                  <i class='bx bx-analyse' ></i>
+                  <span class="links_name">Estimates</span>
+                </a>
+              </li>
+              <li>
+                <a href="settings.html">
+                  <i class='bx bx-cog' ></i>
+                  <span class="links_name">Settings</span>
+                </a>
+              </li>
+              <hr class="solid">
+              <h3 class="heads">Customer</h3>
+              <li>
+                <a href="addcustomer.html">
+                  <i class='bx bx-box' ></i>
+                  <span class="links_name">Create</span>
+                </a>
+              </li>
+                <li>
+                  <a href="customerlist.html">
+                    <i class='bx bx-book-alt' ></i>
+                    <span class="links_name">Customer List</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="bulkupload.html">
+                    <i class='bx bx-log-out' ></i>
+                    <span class="links_name">Bulk Upload</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="managegroup.html">
+                    <i class='bx bx-archive-in' ></i>
+                    <span class="links_name">Manage Group </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="pending.html">
+                    <i class='bx bx-bar-chart' ></i>
+                    <span class="links_name">Pending approvals</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="message.html">
+                    <i class='bx bx-message' ></i>
+                    <span class="links_name">Messaging</span>
+                  </a>
+                </li>
+      
+              <hr class="solid">
+              <h3 class="heads">Payments</h3>
+              <li>
+                <a href="transcations.html">
+                  <i class='bx bx-list-ul' ></i>
+                  <span class="links_name">Transcations</span>
+                </a>
+              </li>
+              <li>
+                <a href="collect.html">
+                  <i class='bx bx-pie-chart-alt-2' ></i>
+                  <span class="links_name">Collect Payment</span>
+                </a>
+              </li>
+              <li>
+                <a href="plans.html">
+                  <i class='bx bx-coin-stack' ></i>
+                  <span class="links_name">Plans</span>
+                </a>
+              </li>
+             
+              <li>
+                <a href="request.html">
+                  <i class='bx bx-heart' ></i>
+                  <span class="links_name">Request</span>
+                </a>
+              </li>
+            
+            </ul>
+        </nav>
+        <div id="page-content-wrapper">
+           
+            <section class="home-section">
+                <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle"></span>
+                    <span class="hamb-bottom"></span>
+                </button>
+            <h1 class="head">DASHBOARD</h1><br>
+            </section>
+           <div class="container">
+            
+            <table>
+                <tr>
+                  <th>Customer ID</th>
+                  <th>Customer</th>
+                  <th>Software</th>
+                  <th>Pack</th>
+                  <th>State</th>
+        
+                </tr>
+                <tr>
+                  <td>01</td>
+                  <td>Arun</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td>Asha</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>03</td>
+                  <td>Vishal</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>04</td>
+                  <td>Nayana</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+               
+              </table>
+           </div>    
+
+
+           </div>
+        </div>
+     </div>
+
+<script>
+$(document).ready(function () {
+    var trigger = $('.hamburger'),
+        overlay = $('.overlay'),
+       isClosed = false;
+
+    function buttonSwitch() {
+
+        if (isClosed === true) {
+            overlay.hide();
+            trigger.removeClass('is-open');
+            trigger.addClass('is-closed');
+            isClosed = false;
+        } else {
+            overlay.show();
+            trigger.removeClass('is-closed');
+            trigger.addClass('is-open');
+            isClosed = true;
+        }
+    }
+
+    trigger.click(function () {
+        buttonSwitch();
+    });
+
+    $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+    });
+});
+</script>
+</body>
+   
+
+</html> 
